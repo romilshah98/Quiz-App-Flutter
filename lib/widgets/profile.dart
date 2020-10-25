@@ -29,6 +29,14 @@ class _ProfileState extends State<Profile> {
     });
   }
 
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _nickNameController.dispose();
+    _ageController.dispose();
+    super.dispose();
+  }
+
   void _submitted() {
     final String _firstName = _firstNameController.text;
     final String _lastName = _lastNameController.text;
@@ -76,7 +84,7 @@ class _ProfileState extends State<Profile> {
   ) {
     return TextFormField(
       validator: (value) {
-        value=value.trim();
+        value = value.trim();
         if (value.isEmpty) {
           return 'Please enter your $label';
         }
@@ -172,7 +180,7 @@ class _ProfileState extends State<Profile> {
                 height: 5,
               ),
               if (_score != -1 && _score != null)
-                Text('Your Last Score: ' + _score.toString(),
+                Text('Your Last Score: $_score/4',
                     style: TextStyle(fontSize: 20)),
             ],
           ),
